@@ -1,142 +1,115 @@
-<div align="center">
-  <br />
-    <a href="https://www.youtube.com/watch?v=E-fdPfRxkzQ" target="_blank">
-      <img src="public/images/readme.png" alt="Project Banner">
-    </a>
-  <br />
+# Samruddh Mulmuley — Industrial Engineering Portfolio
 
-  <div>
-    <img src="https://img.shields.io/badge/-Three.js-black?style=for-the-badge&logo=three.js&logoColor=white" />
-    <img src="https://img.shields.io/badge/-GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  </div>
+A modern, interactive 3D portfolio built to showcase my work in supply chain analytics, manufacturing optimization, operations research, and industrial engineering.
 
-  <h3 align="center">Interactive 3D Portfolio Website</h3>
+**Live Site:** [coming soon]  
+**LinkedIn:** [linkedin.com/in/samruddhmulmuley](https://linkedin.com/in/samruddhmulmuley)
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
-</div>
+---
 
-## 📋 <a name="table">Table of Contents</a>
+## About
 
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets & Snippets](#links)
-6. 🚀 [More](#more)
+I'm an Industrial Engineering graduate student at NYU with hands-on experience optimizing manufacturing and supply chain systems through data analysis, simulation, and Lean methodologies. This portfolio presents my academic projects, professional experience, and technical skills in a visually immersive format.
 
-## ⚠️ Tutorial
+---
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
+## Tech Stack
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+| Layer | Technology |
+|---|---|
+| Framework | React 19 + Vite 6 |
+| 3D Engine | Three.js + React Three Fiber + Drei |
+| Animations | GSAP + ScrollTrigger |
+| Styling | Tailwind CSS v4 |
+| Contact Form | EmailJS |
+| Deployment | Vercel |
 
-<a href="https://www.youtube.com/watch?v=E-fdPfRxkzQ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+---
 
-## <a name="introduction">🤖 Introduction</a>
+## Sections
 
-The 3D Portfolio project is a highly engaging personal website that features animated 3D scenes, smooth camera transitions, interactive model showcases, and responsive design. It’s ideal for developers, designers, or freelancers looking to stand out in the digital crowd.
+- **Hero** — Animated 3D supply chain network scene with name, positioning, and skill tags
+- **About** — Professional summary and core competencies
+- **Experience** — 4 industry roles with company branding cards and impact highlights
+- **Projects** — 9 academic and applied projects with expandable detail modals
+- **Leadership** — Extracurricular roles and student organizations
+- **Education** — NYU (MS Industrial Engineering) + Manipal University (BTech Mechanical Engineering)
+- **Certifications** — Lean Six Sigma Green Belt and other professional credentials
+- **Contact** — EmailJS-powered contact form + links
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
+---
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+## Featured Projects
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+1. AI-Driven Inventory Optimization & Supplier Risk Analytics *(NYU Capstone)*
+2. Changeover Time & Overtime Reduction Using SMED *(Lean Six Sigma)*
+3. Strategic Supply Chain Simulation – Dollar Tree
+4. Stochastic Simulation for Cost-Efficient Project Management
+5. Advanced Facility Planning & Manufacturing Layout Design
+6. Lean Transformation Initiative – Perjuangan Steel Group
+7. Retail Operations Redesign with Statistical Quality Control
+8. Feasibility Study – Manufacturing Relocation (NYC to Mexico)
+9. Probabilistic Risk Management Using Monte Carlo Simulation
 
-- Three.js
-- React Three Fiber
-- Drei
-- GSAP
-- Tailwind CSS
-- Vite
-- React 19
+---
 
-## <a name="features">🔋 Features</a>
+## Running Locally
 
-### Features of the 3D Portfolio Project
-
-👉 Animated 3D models and reveal animations
-
-👉 Realistic lighting and shadows
-
-👉 GSAP-powered scroll interactions
-
-👉 Responsive design with Tailwind CSS and Flexbox/Grid
-
-👉 Micro Interactions
-
-👉 Multi-section layout (About, Projects, Contact)
-
-👉 Mobile optimized 3D experience
-
-and many more, including code architecture and reusability.
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
+**Prerequisites:** Node.js 18+ and npm
 
 ```bash
-git clone https://github.com/adrianhajdin/3d-portfolio.git
-cd 3d-portfolio
-```
+# Clone the repo
+git clone https://github.com/SamruddhMulmuley/Portfolio.git
+cd Portfolio
 
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
+# Install dependencies
 npm install
-```
 
-**Set Up Environment Variables**
+# Set up environment variables
+cp .env.example .env
+# Fill in your EmailJS credentials in .env
 
-Create a new file named `.env` in the root of your project and add the following content:
-
-```env
-VITE_APP_EMAILJS_SERVICE_ID=
-VITE_APP_EMAILJS_TEMPLATE_ID=
-VITE_APP_EMAILJS_PUBLIC_KEY=
-```
-
-Replace the placeholder values with your actual **[EmailJS](https://www.emailjs.com/)** credentials.
-
-**Running the Project**
-
-```bash
+# Start dev server
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173/) in your browser to view the project.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+---
 
-## <a name="links">🔗 Assets and Snippets</a>
+## Environment Variables
 
-Assets and snippets used in the project can be found in the **[video kit](https://jsm.dev/pfolio25-kit)**.
+Create a `.env` file in the root with the following:
 
-<a href="https://jsm.dev/pfolio25-kit" target="_blank">
-  <img src="public/images/readme-video-kit.png" alt="Video Kit Banner">
-</a>
+```env
+VITE_APP_EMAILJS_SERVICE_ID=your_service_id
+VITE_APP_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_APP_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
+Get your credentials at [emailjs.com](https://www.emailjs.com).
 
-## <a name="more">🚀 More</a>
+---
 
-**Advance your skills with JSM Pro Courses**
+## Deployment
 
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
+This site is deployed via **Vercel**. Every push to `main` triggers an automatic redeploy.
 
-<a href="https://beta.jsmastery.pro/" target="_blank">
-  <img src="public/images/readme-bottom.png" alt="Project Banner">
-</a>
+To deploy your own instance:
+1. Fork this repo
+2. Import into [vercel.com](https://vercel.com)
+3. Add the environment variables above
+4. Deploy
+
+---
+
+## Contact
+
+**Samruddh Mulmuley**  
+MS Industrial Engineering · New York University  
+📧 sm12624@nyu.edu  
+💼 [LinkedIn](https://linkedin.com/in/samruddhmulmuley)
+
+---
+
+*Built on top of the [JavaScript Mastery 3D Portfolio](https://github.com/adrianhajdin/3d-portfolio) template, fully redesigned and repurposed for an Industrial Engineering portfolio.*
