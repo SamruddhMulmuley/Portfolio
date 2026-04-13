@@ -2,18 +2,59 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import AnimatedCounter from "../components/AnimatedCounter";
-import Button from "../components/Button";
-import { words } from "../constants";
 import HeroExperience from "../components/models/hero_models/HeroExperience";
+import { heroTags } from "../constants";
 
 const Hero = () => {
   useGSAP(() => {
-    gsap.fromTo(
-      ".hero-text h1",
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
-    );
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl.fromTo(
+      ".hero-badge",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6 }
+    )
+      .fromTo(
+        ".hero-name-line",
+        { y: 70, opacity: 0, skewX: -3 },
+        { y: 0, opacity: 1, skewX: 0, stagger: 0.12, duration: 0.9 },
+        "-=0.2"
+      )
+      .fromTo(
+        ".hero-subtitle",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        "-=0.5"
+      )
+      .fromTo(
+        ".hero-bio-text",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 },
+        "-=0.4"
+      )
+      .fromTo(
+        ".hero-tag",
+        { y: 16, opacity: 0, scale: 0.92 },
+        { y: 0, opacity: 1, scale: 1, stagger: 0.07, duration: 0.4 },
+        "-=0.3"
+      )
+      .fromTo(
+        ".hero-ctas",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.2"
+      );
   });
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top =
+      el.getBoundingClientRect().top +
+      window.pageYOffset -
+      window.innerHeight * 0.1;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   return (
     <section id="hero" className="relative overflow-hidden">
@@ -22,48 +63,62 @@ const Hero = () => {
       </div>
 
       <div className="hero-layout">
-        {/* LEFT: Hero Content */}
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
-          <div className="flex flex-col gap-7">
-            <div className="hero-text">
-              <h1>
-                Shaping
-                <span className="slide">
-                  <span className="wrapper">
-                    {words.map((word, index) => (
-                      <span
-                        key={index}
-                        className="flex items-center md:gap-3 gap-1 pb-2"
-                      >
-                        <img
-                          src={word.imgPath}
-                          alt="person"
-                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
-                        />
-                        <span>{word.text}</span>
-                      </span>
-                    ))}
-                  </span>
-                </span>
-              </h1>
-              <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
+        {/* LEFT: Content */}
+        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5 z-20">
+          <div className="flex flex-col gap-5">
+
+            {/* Badge */}
+            <div className="hero-badge w-fit">
+              <p>🎓 NYU Industrial Engineering</p>
             </div>
 
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I’m Adrian, a developer based in Croatia with a passion for
-              code.
+            {/* Name */}
+            <div className="hero-name overflow-hidden">
+              <h1 className="hero-name-line">Samruddh</h1>
+              <h1 className="hero-name-line">Mulmuley</h1>
+            </div>
+
+            {/* Subheading */}
+            <p className="hero-subtitle">
+              Designing Intelligent Systems for Supply Chain,
+              Manufacturing, and Operations.
             </p>
 
-            <Button
-              text="See My Work"
-              className="md:w-80 md:h-16 w-60 h-12"
-              id="counter"
-            />
+            {/* Bio */}
+            <p className="hero-bio-text">
+              Industrial Engineering graduate student at NYU with experience
+              in supply chain analytics, manufacturing optimization, simulation,
+              and data-driven process improvement.
+            </p>
+
+            {/* Tags */}
+            <div className="hero-tags">
+              {heroTags.map((tag) => (
+                <span key={tag} className="hero-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="hero-ctas">
+              <button
+                onClick={() => scrollTo("projects")}
+                className="cta-primary"
+              >
+                View My Work <span>↓</span>
+              </button>
+              <button
+                onClick={() => scrollTo("contact")}
+                className="cta-secondary"
+              >
+                Contact Me <span>→</span>
+              </button>
+            </div>
           </div>
         </header>
 
-        {/* RIGHT: 3D Model or Visual */}
+        {/* RIGHT: 3D Model */}
         <figure>
           <div className="hero-3d-layout">
             <HeroExperience />

@@ -1,17 +1,13 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contact/ContactExperience";
 
 const Contact = () => {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +16,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading state
-
+    setLoading(true);
     try {
       await emailjs.sendForm(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
@@ -29,13 +24,13 @@ const Contact = () => {
         formRef.current,
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
-
-      // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
+      setSent(true);
+      setTimeout(() => setSent(false), 4000);
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      console.error("EmailJS Error:", error);
     } finally {
-      setLoading(false); // Always stop loading, even on error
+      setLoading(false);
     }
   };
 
@@ -43,10 +38,43 @@ const Contact = () => {
     <section id="contact" className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
-          title="Get in Touch – Let’s Connect"
-          sub="💬 Have questions or ideas? Let’s talk! 🚀"
+          title="Let's Build Better Systems"
+          sub="📬 Open to Opportunities"
         />
-        <div className="grid-12-cols mt-16">
+
+        {/* Intro copy */}
+        <p className="text-center text-white-50 mt-4 max-w-2xl mx-auto text-base leading-relaxed">
+          I'm actively seeking full-time opportunities in industrial engineering,
+          manufacturing, supply chain, operations, and process improvement — roles
+          where I can apply analytics, systems thinking, and continuous improvement
+          to solve real operational challenges.
+        </p>
+
+        {/* Quick links */}
+        <div className="flex items-center justify-center gap-4 flex-wrap mt-8 mb-12">
+          <a
+            href="mailto:sm12624@nyu.edu"
+            className="contact-link-btn"
+          >
+            ✉️ sm12624@nyu.edu
+          </a>
+          <a
+            href="https://www.linkedin.com/in/samruddhmulmuley"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link-btn"
+          >
+            💼 LinkedIn
+          </a>
+          <a
+            href="#"
+            className="contact-link-btn contact-link-primary"
+          >
+            📄 Download Resume
+          </a>
+        </div>
+
+        <div className="grid-12-cols">
           <div className="xl:col-span-5">
             <div className="flex-center card-border rounded-xl p-10">
               <form
@@ -62,7 +90,7 @@ const Contact = () => {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="What’s your good name?"
+                    placeholder="What's your name?"
                     required
                   />
                 </div>
@@ -75,7 +103,7 @@ const Contact = () => {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="What’s your email address?"
+                    placeholder="Your email address"
                     required
                   />
                 </div>
@@ -87,17 +115,17 @@ const Contact = () => {
                     name="message"
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="How can I help you?"
+                    placeholder="Tell me about the opportunity or your question…"
                     rows="5"
                     required
                   />
                 </div>
 
-                <button type="submit">
+                <button type="submit" disabled={loading}>
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">
-                      {loading ? "Sending..." : "Send Message"}
+                      {sent ? "Message Sent ✓" : loading ? "Sending..." : "Send Message"}
                     </p>
                     <div className="arrow-wrapper">
                       <img src="/images/arrow-down.svg" alt="arrow" />
@@ -107,6 +135,7 @@ const Contact = () => {
               </form>
             </div>
           </div>
+
           <div className="xl:col-span-7 min-h-96">
             <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
               <ContactExperience />
